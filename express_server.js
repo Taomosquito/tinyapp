@@ -26,12 +26,22 @@ app.get("/urls", (req, res) => {
   const templateVars = { urls: urlDatabase };
   res.render("urls_index", templateVars);
 });
-// 
-// app.get("/hello", (req, res) => {
-//   const templateVars = { greeting: "Hello World!" };
-//   res.render("hello_world", templateVars);
-// });
-// 
+app.get("/urls/:id", (req, res) => {
+  const urlDatabaseKey = req.params.id;
+  console.log(urlDatabaseKey);
+  const templateVars = { id: urlDatabaseKey, longURL: urlDatabase[urlDatabaseKey] };
+  res.render("urls_show", templateVars);
+});
+
+//--// app.get("/hello", (req, res) => {
+//--//   const templateVars = { greeting: "Hello World!" };
+//--//   res.render("hello_world", templateVars);
+//--// });
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}!`);
 });
+
+
+//..//..// = required when I figure out the coding approach behind it!
+//--// = was an example
